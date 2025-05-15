@@ -10,11 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_05_12_192636) do
+ActiveRecord::Schema[8.0].define(version: 2025_05_15_200815) do
   create_table "records", force: :cascade do |t|
     t.datetime "date"
     t.text "body"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "mood"
   end
 end
