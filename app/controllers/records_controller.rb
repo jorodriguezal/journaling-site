@@ -1,5 +1,6 @@
 class RecordsController < ApplicationController
   def index
+    @records = Record.all # Fetch all records from the database
   end
 
   def new # New is the action that renders the form for creating a new record
@@ -8,8 +9,9 @@ class RecordsController < ApplicationController
 
   def create # Create is the action that handles the form submission
     @record = Record.new(record_params)
+    @record.date = DateTime.now # Set the date to the current date and time
     if @record.save
-      redirect_to records_path, notice: 'Record was successfully created.'
+      redirect_to records_path, notice: "Record was successfully created."
     else
       render :new
     end
