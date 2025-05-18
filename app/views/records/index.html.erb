@@ -1,10 +1,14 @@
 <h1>This is a safe space for you and your thoughts</h1>
 <p>Here you can write your daily record</p>
-<h1>Liste des Records</h1>
+<h1>Records</h1>
 <ul>
   <% @records.each do |record| %>
-    <li><%= record.date %> - <%= record.mood %></li>
+    <li><%= record.date&.strftime("%d/%m/%Y") %> - <%= record.mood %></li>
   <% end %>
 </ul>
-<p>By clicking this button you will be writing today's record</p>
-<%= button_to 'Write a record', new_record_path, method: :get, class: 'btn btn-primary' %>
+<% if @has_today_record %>
+  <p>You already wrote a record today</p>
+<% else %>
+  <p>By clicking this button you will be writing today's record</p>
+  <%= button_to 'Write a record', new_record_path, method: :get, class: 'btn btn-primary' %>
+<% end %>
